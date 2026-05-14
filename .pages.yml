@@ -200,285 +200,281 @@ content:
             type: string
           - name: message
             type: string
-  - name: pages
-    label: Pages
-    type: group
-    content:
-      - name: home
-        label: Home
-        type: file
-        path: src/content/home.json
-        format: json
+  - name: home
+    label: Pages / Home
+    type: file
+    path: src/content/home.json
+    format: json
+    fields:
+      - name: hero
+        type: object
         fields:
-          - name: hero
-            type: object
-            fields:
-              - name: eyebrow
-                type: string
-              - name: firstName
-                label: First name
-                type: string
-              - name: secondName
-                label: Second name
-                type: string
-              - name: date
-                type: string
-              - name: location
-                type: string
-              - name: image
-                component: image
-              - name: scrollLabel
-                label: Scroll label
-                type: string
-          - name: countdown
-            type: object
-            fields:
-              - name: ariaLabel
-                label: ARIA label
-                type: string
-              - name: labels
-                type: object
-                fields:
-                  - name: days
-                    type: string
-                  - name: hours
-                    type: string
-                  - name: minutes
-                    type: string
-          - name: details
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: primaryCta
-                label: Primary CTA
-                type: string
-              - name: secondaryCta
-                label: Secondary CTA
-                type: string
-              - name: items
-                component: detailCard
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{title}"
-          - name: story
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: images
-                component: storyImage
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{title}"
-      - name: schedule
-        label: Schedule
-        type: file
-        path: src/content/schedule.json
-        format: json
-        fields:
-          - name: intro
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: copy
-                type: text
-              - name: dividerText
-                label: Divider text
-                type: string
-          - name: days
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{date} - {title}"
-            fields:
-              - name: date
-                type: string
-              - name: title
-                type: string
-              - name: events
-                component: scheduleEvent
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{title}"
-      - name: travel
-        label: Travel
-        type: file
-        path: src/content/travel.json
-        format: json
-        fields:
-          - name: hero
-            type: object
-            fields:
-              - name: eyebrow
-                type: string
-              - name: title
-                type: string
-          - name: venue
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: description
-                type: text
-              - name: mapUrl
-                label: Map URL
-                type: string
-              - name: mapCta
-                label: Map CTA
-                type: string
-              - name: details
-                component: venueDetail
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{label}"
-              - name: image
-                component: image
-          - name: stay
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: copy
-                type: text
-              - name: hotels
-                component: hotel
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{title}"
-          - name: gettingThere
-            label: Getting there
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: copy
-                type: text
-              - name: tips
-                component: travelTip
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{title}"
-          - name: feature
-            type: object
-            fields:
-              - name: caption
-                type: string
-              - name: image
-                component: image
-      - name: rsvp
-        label: RSVP
-        type: file
-        path: src/content/rsvp.json
-        format: json
-        fields:
-          - name: hero
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: message
-                type: text
-          - name: decorativeImage
-            label: Decorative image
+          - name: eyebrow
+            type: string
+          - name: firstName
+            label: First name
+            type: string
+          - name: secondName
+            label: Second name
+            type: string
+          - name: date
+            type: string
+          - name: location
+            type: string
+          - name: image
             component: image
-          - name: form
-            type: object
-            fields:
-              - name: guestNamesLabel
-                label: Guest names label
-                type: string
-              - name: guestNamesPlaceholder
-                label: Guest names placeholder
-                type: string
-              - name: attendanceLabel
-                label: Attendance label
-                type: string
-              - name: attendanceOptions
-                component: option
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{label}"
-              - name: mealLabel
-                label: Meal label
-                type: string
-              - name: firstMealPlaceholder
-                label: First meal placeholder
-                type: string
-              - name: secondMealPlaceholder
-                label: Second meal placeholder
-                type: string
-              - name: mealOptions
-                component: option
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{label}"
-              - name: dietaryPlaceholder
-                label: Dietary placeholder
-                type: string
-              - name: songLabel
-                label: Song label
-                type: string
-              - name: songPlaceholder
-                label: Song placeholder
-                type: string
-              - name: messageLabel
-                label: Message label
-                type: string
-              - name: messagePlaceholder
-                label: Message placeholder
-                type: text
-              - name: submitLabel
-                label: Submit label
-                type: string
-              - name: thanksMessage
-                label: Thanks message
-                type: string
-              - name: confirmationMessage
-                label: Confirmation message
-                type: string
-      - name: registry
-        label: Registry
-        type: file
-        path: src/content/registry.json
-        format: json
+          - name: scrollLabel
+            label: Scroll label
+            type: string
+      - name: countdown
+        type: object
         fields:
-          - name: hero
+          - name: ariaLabel
+            label: ARIA label
+            type: string
+          - name: labels
             type: object
             fields:
-              - name: eyebrow
+              - name: days
                 type: string
-              - name: title
+              - name: hours
                 type: string
-              - name: message
-                type: text
-              - name: signature
+              - name: minutes
                 type: string
+      - name: details
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: primaryCta
+            label: Primary CTA
+            type: string
+          - name: secondaryCta
+            label: Secondary CTA
+            type: string
           - name: items
-            component: registryItem
+            component: detailCard
             list:
               collapsible:
                 collapsed: true
                 summary: "{title}"
-          - name: partners
-            type: object
-            fields:
-              - name: title
-                type: string
-              - name: cta
-                label: CTA
-                type: string
-              - name: items
-                label: Partner names
-                type: string
-                list: true
+      - name: story
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: images
+            component: storyImage
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+  - name: schedule
+    label: Pages / Schedule
+    type: file
+    path: src/content/schedule.json
+    format: json
+    fields:
+      - name: intro
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: copy
+            type: text
+          - name: dividerText
+            label: Divider text
+            type: string
+      - name: days
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{date} - {title}"
+        fields:
+          - name: date
+            type: string
+          - name: title
+            type: string
+          - name: events
+            component: scheduleEvent
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+  - name: travel
+    label: Pages / Travel
+    type: file
+    path: src/content/travel.json
+    format: json
+    fields:
+      - name: hero
+        type: object
+        fields:
+          - name: eyebrow
+            type: string
+          - name: title
+            type: string
+      - name: venue
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: description
+            type: text
+          - name: mapUrl
+            label: Map URL
+            type: string
+          - name: mapCta
+            label: Map CTA
+            type: string
+          - name: details
+            component: venueDetail
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+          - name: image
+            component: image
+      - name: stay
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: copy
+            type: text
+          - name: hotels
+            component: hotel
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+      - name: gettingThere
+        label: Getting there
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: copy
+            type: text
+          - name: tips
+            component: travelTip
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+      - name: feature
+        type: object
+        fields:
+          - name: caption
+            type: string
+          - name: image
+            component: image
+  - name: rsvp
+    label: Pages / RSVP
+    type: file
+    path: src/content/rsvp.json
+    format: json
+    fields:
+      - name: hero
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: message
+            type: text
+      - name: decorativeImage
+        label: Decorative image
+        component: image
+      - name: form
+        type: object
+        fields:
+          - name: guestNamesLabel
+            label: Guest names label
+            type: string
+          - name: guestNamesPlaceholder
+            label: Guest names placeholder
+            type: string
+          - name: attendanceLabel
+            label: Attendance label
+            type: string
+          - name: attendanceOptions
+            component: option
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+          - name: mealLabel
+            label: Meal label
+            type: string
+          - name: firstMealPlaceholder
+            label: First meal placeholder
+            type: string
+          - name: secondMealPlaceholder
+            label: Second meal placeholder
+            type: string
+          - name: mealOptions
+            component: option
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+          - name: dietaryPlaceholder
+            label: Dietary placeholder
+            type: string
+          - name: songLabel
+            label: Song label
+            type: string
+          - name: songPlaceholder
+            label: Song placeholder
+            type: string
+          - name: messageLabel
+            label: Message label
+            type: string
+          - name: messagePlaceholder
+            label: Message placeholder
+            type: text
+          - name: submitLabel
+            label: Submit label
+            type: string
+          - name: thanksMessage
+            label: Thanks message
+            type: string
+          - name: confirmationMessage
+            label: Confirmation message
+            type: string
+  - name: registry
+    label: Pages / Registry
+    type: file
+    path: src/content/registry.json
+    format: json
+    fields:
+      - name: hero
+        type: object
+        fields:
+          - name: eyebrow
+            type: string
+          - name: title
+            type: string
+          - name: message
+            type: text
+          - name: signature
+            type: string
+      - name: items
+        component: registryItem
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+      - name: partners
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: cta
+            label: CTA
+            type: string
+          - name: items
+            label: Partner names
+            type: string
+            list: true
