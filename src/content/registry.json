@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "eyebrow": "Our Registry",
+    "title": "With Love & Gratitude",
+    "message": "Your presence at our wedding is the greatest gift we could ask for. However, if you wish to honor us with a gift, we have curated a registry of things we will need for our home and adventures together as a married couple.",
+    "signature": "James & Alysha"
+  },
+  "items": [
+    {
+      "title": "Honeymoon Fund",
+      "description": "Help us create unforgettable memories as we embark on our first journey as husband and wife to the Amalfi Coast.",
+      "cta": "Contribute to our trip",
+      "variant": "feature",
+      "image": {
+        "src": "/uploads/registry-honeymoon.png",
+        "alt": "White sandy beach with turquoise water under a soft golden sunset."
+      }
+    },
+    {
+      "title": "Kitchen & Dining",
+      "description": "Equipping our home for a lifetime of shared meals and hosted gatherings.",
+      "cta": "Browse collection",
+      "variant": "vertical",
+      "image": {
+        "src": "/uploads/registry-kitchen-dining.png",
+        "alt": "Artisanal ceramic plates and fine glassware on a light stone countertop."
+      }
+    },
+    {
+      "title": "Home Essentials",
+      "description": "The fine details that turn a house into a warm and welcoming home.",
+      "cta": "View registry",
+      "variant": "wide-reverse",
+      "image": {
+        "src": "/uploads/registry-home-essentials.png",
+        "alt": "Soft linen bedding with flowers in a glass vase on a bedside table."
+      }
+    },
+    {
+      "title": "Experiences",
+      "description": "Contributing to our first year of dates, classes, and local adventures.",
+      "cta": "Gift an experience",
+      "variant": "wide",
+      "image": {
+        "src": "/uploads/registry-experiences.png",
+        "alt": "Italian courtyard at dusk with string lights and a candlelit table for two."
+      }
+    }
+  ],
+  "partners": {
+    "title": "Registry Partners",
+    "cta": "Visit Full Registry",
+    "items": ["Crate & Barrel", "Williams Sonoma", "Zola"]
+  }
+}

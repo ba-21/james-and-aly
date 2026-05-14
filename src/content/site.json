@@ -1,0 +1,15 @@
+{
+  "coupleName": "James & Alysha",
+  "weddingDate": "2027-07-16T16:30:00+03:00",
+  "navItems": [
+    { "id": "home", "label": "Home" },
+    { "id": "schedule", "label": "Schedule" },
+    { "id": "travel", "label": "Travel" },
+    { "id": "rsvp", "label": "RSVP" },
+    { "id": "registry", "label": "Registry" }
+  ],
+  "footer": {
+    "copyrightName": "James & Alysha",
+    "message": "Made with love."
+  }
+}

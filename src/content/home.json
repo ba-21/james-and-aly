@@ -1,0 +1,91 @@
+{
+  "hero": {
+    "eyebrow": "We're getting married",
+    "firstName": "James",
+    "secondName": "Alysha",
+    "date": "July 16, 2027",
+    "location": "Crete, Greece",
+    "image": {
+      "src": "/uploads/hero-wedding.png",
+      "alt": "Soft outdoor wedding setting at dusk with champagne fabric, floral arrangements, and warm evening light."
+    },
+    "scrollLabel": "Scroll"
+  },
+  "countdown": {
+    "ariaLabel": "Countdown to the wedding",
+    "labels": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Mins"
+    }
+  },
+  "details": {
+    "title": "The Celebration Details",
+    "primaryCta": "RSVP Online",
+    "secondaryCta": "View Schedule",
+    "items": [
+      {
+        "icon": "church",
+        "title": "The Ceremony",
+        "lines": ["The Heritage Gardens", "4:30 PM"]
+      },
+      {
+        "icon": "celebration",
+        "title": "The Reception",
+        "lines": ["The Grand Pavilion", "6:00 PM"]
+      },
+      {
+        "icon": "hotel",
+        "title": "Accommodations",
+        "lines": ["Blue Water Resort", "Room block available"]
+      }
+    ]
+  },
+  "story": {
+    "title": "Our Story",
+    "images": [
+      {
+        "title": "A walk through Crete",
+        "image": {
+          "src": "/uploads/engagement-01.png",
+          "alt": "Engaged couple walking hand in hand through a sunlit Mediterranean stone lane."
+        }
+      },
+      {
+        "title": "By the sea",
+        "image": {
+          "src": "/uploads/engagement-02.png",
+          "alt": "Engaged couple seated together on a stone wall overlooking the Cretan sea."
+        }
+      },
+      {
+        "title": "Among the olives",
+        "image": {
+          "src": "/uploads/engagement-03.png",
+          "alt": "Engaged couple standing close together in a quiet olive grove."
+        }
+      },
+      {
+        "title": "Dancing at dusk",
+        "image": {
+          "src": "/uploads/engagement-04.png",
+          "alt": "Engaged couple dancing together on a quiet beach at dusk."
+        }
+      },
+      {
+        "title": "Morning coffee",
+        "image": {
+          "src": "/uploads/engagement-05.png",
+          "alt": "Engaged couple sharing coffee at an outdoor cafe table in a Cretan village."
+        }
+      },
+      {
+        "title": "Terrace twilight",
+        "image": {
+          "src": "/uploads/engagement-06.png",
+          "alt": "Engaged couple embracing on a whitewashed terrace at blue hour."
+        }
+      }
+    ]
+  }
+}

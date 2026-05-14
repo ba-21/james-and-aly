@@ -1,0 +1,75 @@
+{
+  "intro": {
+    "title": "The Weekend",
+    "copy": "A celebration of love, friendship, and new beginnings. We cannot wait to share these moments with you.",
+    "dividerText": "and"
+  },
+  "days": [
+    {
+      "date": "Friday, July 16th",
+      "title": "The Kickoff",
+      "events": [
+        {
+          "title": "Welcome Drinks",
+          "time": "Friday, July 16th",
+          "description": "Join us for cocktails and hors d'oeuvres to kick off the celebration.",
+          "location": "The Terrace at Blue Water, Crete, Greece",
+          "icon": "local_bar",
+          "imageSide": "right",
+          "image": {
+            "src": "/uploads/welcome-drinks.png",
+            "alt": "Coastal terrace lounge at sunset with cocktails, string lights, and the ocean in the background."
+          }
+        }
+      ]
+    },
+    {
+      "date": "Saturday, July 17th",
+      "title": "The Big Day",
+      "events": [
+        {
+          "title": "The Ceremony",
+          "time": "4:30 PM",
+          "description": "Our ceremony will be held in the sunken garden. Please arrive by 4:15 PM to find your seats.",
+          "location": "The Heritage Gardens, Crete, Greece",
+          "icon": "church",
+          "imageSide": "left",
+          "image": {
+            "src": "/uploads/ceremony-garden.png",
+            "alt": "Outdoor garden ceremony with white chairs, sage greenery, and a minimalist floral arch."
+          }
+        },
+        {
+          "title": "The Reception",
+          "time": "6:00 PM - 12:00 AM",
+          "description": "Cocktails followed by a seated dinner and dancing under the stars in the Grand Pavilion.",
+          "location": "The Grand Pavilion, Crete, Greece",
+          "icon": "restaurant",
+          "imageSide": "right",
+          "image": {
+            "src": "/uploads/reception-pavilion.png",
+            "alt": "Elegant reception table with crystal glassware, dusty rose napkins, candles, and white flowers."
+          }
+        }
+      ]
+    },
+    {
+      "date": "Sunday, July 18th",
+      "title": "Fond Farewells",
+      "events": [
+        {
+          "title": "Farewell Brunch",
+          "time": "10:00 AM - 1:00 PM",
+          "description": "A casual drop-in brunch before everyone heads home. Coffee, pastries, and memories.",
+          "location": "The Sunroom at Blue Water, Crete, Greece",
+          "icon": "bakery_dining",
+          "imageSide": "left",
+          "image": {
+            "src": "/uploads/farewell-brunch.png",
+            "alt": "Bright brunch table with coffee, pastries, fresh fruit, and soft morning light."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .mobile-menu {
+    display: grid;
+    gap: 12px;
+    width: min(100% - (var(--gutter) * 2), var(--container));
+    margin: 0 auto;
+    padding: 0 0 18px;
+  }
+
+  .mobile-menu-link {
+    width: 100%;
+    padding: 14px 0;
+    text-align: left;
+  }
+
+  .hero-section {
+    min-height: 88svh;
+    padding-top: calc(var(--header-height) + 56px);
+    padding-bottom: 112px;
+  }
+
+  .hero-title,
+  .page-title {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+
+  .hero-date,
+  .section-title,
+  .and-divider em {
+    font-size: 24px;
+  }
+
+  .countdown {
+    gap: 10px;
+  }
+
+  .countdown-group {
+    gap: 10px;
+  }
+
+  .countdown-unit {
+    min-width: 68px;
+  }
+
+  .countdown-value,
+  .countdown-separator {
+    font-size: 32px;
+  }
+
+  .detail-grid,
+  .story-grid,
+  .event-row {
+    grid-template-columns: 1fr;
+  }
+
+  .registry-hero {
+    margin-bottom: 72px;
+  }
+
+  .registry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registry-card,
+  .registry-card--feature,
+  .registry-card--vertical,
+  .registry-card--wide,
+  .registry-card--wide-reverse {
+    grid-column: auto;
+  }
+
+  .registry-card--wide,
+  .registry-card--wide-reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .registry-card--wide .registry-card-image,
+  .registry-card--wide-reverse .registry-card-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .registry-card--wide-reverse .registry-card-image {
+    order: 0;
+  }
+
+  .registry-card--wide-reverse .registry-card-content {
+    order: 1;
+  }
+
+  .travel-hero {
+    margin-bottom: 72px;
+  }
+
+  .venue-section,
+  .getting-there {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .venue-copy {
+    order: 2;
+  }
+
+  .venue-image-frame {
+    order: 1;
+  }
+
+  .venue-section {
+    margin-bottom: 84px;
+  }
+
+  .hotel-grid,
+  .travel-tip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .getting-there {
+    padding-block: 84px;
+  }
+
+  .event-row {
+    gap: 28px;
+  }
+
+  .event-row--image-right .event-image-frame {
+    order: 1;
+  }
+
+  .event-row--image-right .event-details {
+    order: 2;
+  }
+
+  .event-details,
+  .event-details--right {
+    text-align: left;
+  }
+
+  .event-details--right .event-meta,
+  .event-details--right .event-location {
+    flex-direction: row;
+  }
+
+  .timeline::before {
+    left: 24px;
+    transform: none;
+  }
+
+  .day-heading {
+    align-items: flex-start;
+    padding-left: 48px;
+  }
+
+  .day-heading h2 {
+    font-size: 32px;
+    line-height: 1.3;
+  }
+
+  .day-events {
+    gap: 64px;
+    padding-left: 48px;
+  }
+}
+
+@media (max-width: 680px) {
+  :root {
+    --gutter: 20px;
+  }
+
+  body {
+    padding-bottom: 74px;
+  }
+
+  .brand-button,
+  .footer-brand {
+    font-size: 25px;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid rgba(210, 197, 177, 0.34);
+    background: rgba(250, 249, 246, 0.94);
+    box-shadow: 0 -8px 24px rgba(47, 49, 47, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobile-nav-item {
+    min-height: 72px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 5px;
+    color: var(--color-text-muted);
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .mobile-nav-item.is-active {
+    color: var(--color-primary);
+  }
+
+  .mobile-nav-item .material-icon {
+    font-size: 24px;
+  }
+
+  .mobile-nav-item span {
+    font-size: 10px;
+  }
+
+  .hero-section {
+    min-height: 86svh;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .short-divider {
+    margin-block: 24px;
+  }
+
+  .hero-date {
+    margin-bottom: 32px;
+  }
+
+  .countdown {
+    flex-wrap: wrap;
+  }
+
+  .countdown-separator {
+    display: none;
+  }
+
+  .details-section,
+  .schedule-page,
+  .registry-page,
+  .travel-page,
+  .rsvp-page {
+    padding-bottom: 88px;
+  }
+
+  .details-section {
+    padding-top: 72px;
+  }
+
+  .story-section {
+    padding: 72px 0 88px;
+  }
+
+  .detail-card {
+    min-height: 208px;
+    padding: 32px 24px;
+  }
+
+  .story-grid {
+    gap: 18px;
+  }
+
+  .gallery-modal-panel {
+    width: min(100%, 760px);
+  }
+
+  .gallery-modal-frame {
+    width: min(88vw, 680px);
+  }
+
+  .gallery-modal-close {
+    right: 16px;
+  }
+
+  .gallery-modal-step--previous {
+    left: 16px;
+  }
+
+  .gallery-modal-step--next {
+    right: 16px;
+  }
+
+  .gallery-modal-frame img {
+    max-height: 70svh;
+  }
+
+  .gallery-modal-frame figcaption {
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  .home-actions {
+    flex-direction: column;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+  .schedule-page {
+    padding-top: calc(var(--header-height) + 48px);
+  }
+
+  .schedule-intro {
+    margin-bottom: 58px;
+  }
+
+  .registry-hero {
+    margin-bottom: 56px;
+  }
+
+  .registry-hero .fine-divider {
+    margin-block: 24px;
+  }
+
+  .registry-message {
+    font-size: 16px;
+  }
+
+  .registry-signature {
+    font-size: 24px;
+  }
+
+  .registry-grid {
+    gap: 22px;
+  }
+
+  .registry-card-content,
+  .registry-card--feature .registry-card-content,
+  .registry-card--wide .registry-card-content,
+  .registry-card--wide-reverse .registry-card-content {
+    padding: 28px 24px;
+  }
+
+  .registry-card h2 {
+    font-size: 28px;
+  }
+
+  .registry-card--feature h2,
+  .registry-partners h2 {
+    font-size: 32px;
+  }
+
+  .registry-partners {
+    margin-top: 72px;
+  }
+
+  .travel-page {
+    padding-top: calc(var(--header-height) + 48px);
+  }
+
+  .travel-hero {
+    margin-bottom: 56px;
+  }
+
+  .venue-copy h2,
+  .stay-intro h2,
+  .getting-there-intro h2 {
+    font-size: 32px;
+  }
+
+  .venue-copy > p,
+  .stay-intro p {
+    font-size: 16px;
+  }
+
+  .stay-section {
+    padding: 72px 0 84px;
+  }
+
+  .stay-intro {
+    margin-bottom: 40px;
+  }
+
+  .hotel-grid {
+    gap: 28px;
+  }
+
+  .hotel-content {
+    padding: 28px 24px;
+  }
+
+  .hotel-heading h3 {
+    font-size: 26px;
+  }
+
+  .travel-tip-grid {
+    gap: 34px;
+  }
+
+  .travel-feature {
+    height: 320px;
+  }
+
+  .travel-feature p {
+    right: 24px;
+    bottom: 30px;
+    left: 24px;
+    font-size: 30px;
+  }
+
+  .rsvp-page {
+    padding-top: calc(var(--header-height) + 44px);
+  }
+
+  .rsvp-hero {
+    margin-bottom: 42px;
+  }
+
+  .rsvp-hero p {
+    font-size: 16px;
+  }
+
+  .rsvp-card {
+    padding: 34px 24px;
+  }
+
+  .rsvp-form {
+    gap: 38px;
+  }
+
+  .radio-row,
+  .meal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-row {
+    display: grid;
+    gap: 16px;
+  }
+
+  .rsvp-submit {
+    width: 100%;
+  }
+
+  .rsvp-heart {
+    padding-top: 56px;
+  }
+
+  .registry-partners .fine-divider {
+    margin-bottom: 36px;
+  }
+
+  .partner-list {
+    gap: 22px 32px;
+  }
+
+  .partner-list span {
+    font-size: 24px;
+  }
+
+  .page-kicker {
+    font-size: 16px;
+  }
+
+  .timeline-day {
+    margin-bottom: 76px;
+  }
+
+  .day-heading,
+  .day-events {
+    padding-left: 40px;
+  }
+
+  .event-details h3 {
+    font-size: 26px;
+  }
+
+  .site-footer {
+    padding-bottom: 132px;
+  }
+}

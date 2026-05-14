@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "title": "Kindly Respond",
+    "message": "We are so excited to celebrate our special day with you. Please let us know your plans by June 15th, 2027."
+  },
+  "decorativeImage": {
+    "src": "/uploads/rsvp-olive-branch.png",
+    "alt": ""
+  },
+  "form": {
+    "guestNamesLabel": "Guest Names",
+    "guestNamesPlaceholder": "Full names of all guests in your party",
+    "attendanceLabel": "Will you join us?",
+    "attendanceOptions": [
+      { "value": "attending", "label": "Joyfully Accept" },
+      { "value": "declining", "label": "Regretfully Decline" }
+    ],
+    "mealLabel": "Meal Preference",
+    "firstMealPlaceholder": "Select an option",
+    "secondMealPlaceholder": "Second Guest Preference",
+    "mealOptions": [
+      { "value": "beef", "label": "Herb-Crusted Filet Mignon" },
+      { "value": "fish", "label": "Miso Glazed Sea Bass" },
+      { "value": "vegetarian", "label": "Wild Mushroom Risotto (V)" }
+    ],
+    "dietaryPlaceholder": "Dietary restrictions or allergies",
+    "songLabel": "Song Request",
+    "songPlaceholder": "What song will get you on the dance floor?",
+    "messageLabel": "Short Message",
+    "messagePlaceholder": "Leave us a note, wish, or anything we should know.",
+    "submitLabel": "Submit Response",
+    "thanksMessage": "Thank you for being part of our story.",
+    "confirmationMessage": "Your response has been recorded locally for this demo."
+  }
+}

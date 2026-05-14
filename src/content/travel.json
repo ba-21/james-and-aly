@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "eyebrow": "Plan Your Journey",
+    "title": "Travel & Stay"
+  },
+  "venue": {
+    "title": "The Estate at Oak Falls",
+    "description": "Nestled in the heart of the valley, the estate offers a timeless backdrop of rolling hills and whispering oaks. It is where our ceremony and reception will both take place, ensuring a seamless flow for our celebration.",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Crete%2C%20Greece",
+    "mapCta": "View on map",
+    "details": [
+      {
+        "icon": "location_on",
+        "label": "Address",
+        "value": "Crete, Greece"
+      },
+      {
+        "icon": "schedule",
+        "label": "Ceremony Start",
+        "value": "Arrivals from 3:30 PM. Ceremony at 4:00 PM"
+      }
+    ],
+    "image": {
+      "src": "/uploads/travel-venue.png",
+      "alt": "Mediterranean-style wedding estate at dusk with limestone walls, terracotta tiles, cypress trees, and olive groves."
+    }
+  },
+  "stay": {
+    "title": "Recommended Stay",
+    "copy": "We have secured room blocks at these nearby hotels for your comfort. Please mention the James & Aly wedding when booking.",
+    "hotels": [
+      {
+        "title": "The Cretan Sands Resort",
+        "distance": "0.5 miles from venue",
+        "description": "A charming luxury inn with scenic views and calm terraces. Perfect for guests who want to stay close to the celebration.",
+        "featured": true,
+        "buttonLabel": "Book now",
+        "image": {
+          "src": "/uploads/travel-hotel-cretan-sands.png",
+          "alt": "Luxury boutique hotel terrace with wicker furniture, white linens, and soft morning light."
+        }
+      },
+      {
+        "title": "The Olive Grove Estate",
+        "distance": "2.8 miles from venue",
+        "description": "A modern resort offering extensive spa facilities and quiet poolside spaces. A shuttle service will be provided from here.",
+        "featured": false,
+        "buttonLabel": "Book now",
+        "image": {
+          "src": "/uploads/travel-hotel-olive-grove.png",
+          "alt": "Luxury spa hotel pool at sunrise with cream umbrellas, still water, and natural wood accents."
+        }
+      }
+    ]
+  },
+  "gettingThere": {
+    "title": "Getting There",
+    "copy": "Crete is reachable through several major airports. We recommend renting a car if you plan to explore the island before or after the wedding weekend.",
+    "tips": [
+      {
+        "icon": "flight",
+        "title": "By Air",
+        "description": "Most guests will fly directly from the UK to Chania (CHQ) or Heraklion (HER) airports. Both are well-connected and offer easy access to the venue."
+      },
+      {
+        "icon": "directions_car",
+        "title": "Local Driving",
+        "description": "Car rentals are readily available at the airport and are recommended for exploring the island. Please note that driving is on the right-hand side of the road."
+      },
+      {
+        "icon": "airport_shuttle",
+        "title": "Event Shuttle",
+        "description": "A shuttle service will run between the recommended hotels and the venue to ensure everyone travels safely and together."
+      },
+      {
+        "icon": "tips_and_updates",
+        "title": "Local Tip",
+        "description": "Cell service can be spotty on winding roads. We suggest downloading offline maps of Crete before you arrive."
+      }
+    ]
+  },
+  "feature": {
+    "caption": "We can't wait to welcome you.",
+    "image": {
+      "src": "/uploads/travel-landscape.png",
+      "alt": "Panoramic valley landscape at sunset with soft rose and lavender light over the mountains."
+    }
+  }
+}
