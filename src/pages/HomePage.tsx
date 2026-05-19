@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react'
+import { ContactModal } from '../components/ContactModal'
 import { GalleryModal } from '../components/GalleryModal'
 import { Icon } from '../components/Icon'
-import { home, weddingDate } from '../content'
+import { home, rsvp, weddingDate } from '../content'
 import { useCountdown } from '../hooks/useCountdown'
 import type { PageId } from '../types'
 
@@ -17,6 +18,7 @@ export function HomePage({ onNavigate, onRsvp }: HomePageProps) {
   const storyImages = home.story.images
   const storyCount = storyImages.length
   const [activeStoryIndex, setActiveStoryIndex] = useState<number | null>(null)
+  const [isContactOpen, setIsContactOpen] = useState(false)
   const countdownItems = [
     { label: home.countdown.labels.days, value: countdown.days.toString() },
     { label: home.countdown.labels.hours, value: formatUnit(countdown.hours) },
@@ -121,6 +123,14 @@ export function HomePage({ onNavigate, onRsvp }: HomePageProps) {
             >
               {home.details.secondaryCta}
             </button>
+            <button
+              className="secondary-button contact-button"
+              type="button"
+              onClick={() => setIsContactOpen(true)}
+            >
+              <Icon name="mail" />
+              <span>{home.details.contactCta}</span>
+            </button>
           </div>
         </div>
       </section>
@@ -157,6 +167,11 @@ export function HomePage({ onNavigate, onRsvp }: HomePageProps) {
         activeIndex={activeStoryIndex}
         onClose={closeStoryModal}
         onStep={stepStory}
+      />
+      <ContactModal
+        isOpen={isContactOpen}
+        recipientEmail={rsvp.form.recipientEmail}
+        onClose={() => setIsContactOpen(false)}
       />
     </>
   )

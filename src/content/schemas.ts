@@ -372,6 +372,7 @@ export const assertHomeContent: ContentAssertion<HomeContent> = (value, path) =>
   requireString(details, 'title', `${path}.details`)
   requireString(details, 'primaryCta', `${path}.details`)
   requireString(details, 'secondaryCta', `${path}.details`)
+  requireString(details, 'contactCta', `${path}.details`)
   requireArray(details, 'items', `${path}.details`).forEach((item, index) =>
     assertCelebrationDetail(item, `${path}.details.items[${index}]`),
   )
@@ -460,6 +461,7 @@ export const assertRsvpContent: ContentAssertion<RsvpContent> = (value, path) =>
   requireImage(rsvp.decorativeImage, `${path}.decorativeImage`)
 
   const form = requireObjectField(rsvp, 'form', path)
+  requireStringField(form, 'recipientEmail', `${path}.form`)
   requireString(form, 'guestNamesLabel', `${path}.form`)
   requireString(form, 'guestNamesPlaceholder', `${path}.form`)
   requireString(form, 'attendanceLabel', `${path}.form`)

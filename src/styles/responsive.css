@@ -311,6 +311,19 @@
     width: 100%;
   }
 
+  .contact-modal-panel {
+    padding: 40px 24px 30px;
+  }
+
+  .contact-modal-title {
+    padding-right: 46px;
+    font-size: 30px;
+  }
+
+  .contact-submit {
+    width: 100%;
+  }
+
   .schedule-page {
     padding-top: calc(var(--header-height) + 48px);
   }

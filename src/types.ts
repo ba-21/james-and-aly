@@ -18,6 +18,7 @@ export type MaterialIconName =
   | 'hotel'
   | 'local_bar'
   | 'location_on'
+  | 'mail'
   | 'map'
   | 'menu'
   | 'music_note'

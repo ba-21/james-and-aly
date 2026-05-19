@@ -28,6 +28,54 @@ const getFormErrors = (form: RsvpFormState) => ({
   attendance: form.attendance ? '' : 'Please select whether you can attend.',
 })
 
+const formatCurrentDate = () =>
+  new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(new Date())
+
+const getAttendanceLabel = (attendance: Attendance) =>
+  rsvp.form.attendanceOptions.find((option) => option.value === attendance)
+    ?.label ?? 'Not selected'
+
+const getMealLabel = (meal: MealChoice) =>
+  rsvp.form.mealOptions.find((option) => option.value === meal)?.label ??
+  'Not selected'
+
+const getOptionalValue = (value: string) => value.trim() || 'None provided'
+
+const buildRsvpEmailLink = (form: RsvpFormState) => {
+  const guestNames = form.guests.trim()
+  const attendance = getAttendanceLabel(form.attendance)
+  const currentDate = formatCurrentDate()
+  const subject = `RSVP from ${guestNames} Answer: ${attendance} Date: ${currentDate}`
+  const body = [
+    'Guest Names:',
+    guestNames,
+    '',
+    'Attendance:',
+    attendance,
+    '',
+    'Meal Preference:',
+    `Guest 1: ${getMealLabel(form.firstMeal)}`,
+    `Guest 2: ${getMealLabel(form.secondMeal)}`,
+    '',
+    'Dietary Restrictions / Allergies:',
+    getOptionalValue(form.dietaryNotes),
+    '',
+    'Song Request:',
+    getOptionalValue(form.songRequest),
+    '',
+    'Short Message:',
+    getOptionalValue(form.message),
+  ].join('\n')
+  const params = new URLSearchParams({ subject, body })
+  const recipientEmail = rsvp.form.recipientEmail.trim()
+
+  return `mailto:${recipientEmail}?${params.toString()}`
+}
+
 export function RsvpPage() {
   const guestNamesRef = useRef<HTMLInputElement | null>(null)
   const firstAttendanceRef = useRef<HTMLInputElement | null>(null)
@@ -74,6 +122,7 @@ export function RsvpPage() {
       return
     }
 
+    window.location.href = buildRsvpEmailLink(form)
     setIsSubmitted(true)
   }
 

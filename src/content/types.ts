@@ -53,6 +53,7 @@ export type HomeContent = {
     title: string
     primaryCta: string
     secondaryCta: string
+    contactCta: string
     items: CelebrationDetail[]
   }
   story: {
@@ -173,6 +174,7 @@ export type RsvpContent = {
   }
   decorativeImage: EventImage
   form: {
+    recipientEmail: string
     guestNamesLabel: string
     guestNamesPlaceholder: string
     attendanceLabel: string
