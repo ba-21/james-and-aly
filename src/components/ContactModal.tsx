@@ -194,6 +194,12 @@ export function ContactModal({
         <h2 className="contact-modal-title" id="contact-modal-title">
           Contact Us
         </h2>
+        <div className="contact-modal-intro">
+          <p>Please contact us with any questions you may have</p>
+          <p>Obviousley we're quite busy right now</p>
+          <p>But we'll get back to you as soon as we can</p>
+          <p>Looking forward to seeing you there !</p>
+        </div>
 
         <form
           className="contact-form"
