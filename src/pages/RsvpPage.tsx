@@ -2,6 +2,7 @@ import type { ChangeEvent, FormEvent } from 'react'
 import { useRef, useState } from 'react'
 import { Icon } from '../components/Icon'
 import { rsvp, type Attendance, type MealChoice } from '../content'
+import { sendRsvpEmail } from '../services/email'
 
 type RsvpFormState = {
   guests: string
@@ -28,13 +29,6 @@ const getFormErrors = (form: RsvpFormState) => ({
   attendance: form.attendance ? '' : 'Please select whether you can attend.',
 })
 
-const formatCurrentDate = () =>
-  new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date())
-
 const getAttendanceLabel = (attendance: Attendance) =>
   rsvp.form.attendanceOptions.find((option) => option.value === attendance)
     ?.label ?? 'Not selected'
@@ -45,42 +39,13 @@ const getMealLabel = (meal: MealChoice) =>
 
 const getOptionalValue = (value: string) => value.trim() || 'None provided'
 
-const buildRsvpEmailLink = (form: RsvpFormState) => {
-  const guestNames = form.guests.trim()
-  const attendance = getAttendanceLabel(form.attendance)
-  const currentDate = formatCurrentDate()
-  const subject = `RSVP from ${guestNames} Answer: ${attendance} Date: ${currentDate}`
-  const body = [
-    'Guest Names:',
-    guestNames,
-    '',
-    'Attendance:',
-    attendance,
-    '',
-    'Meal Preference:',
-    `Guest 1: ${getMealLabel(form.firstMeal)}`,
-    `Guest 2: ${getMealLabel(form.secondMeal)}`,
-    '',
-    'Dietary Restrictions / Allergies:',
-    getOptionalValue(form.dietaryNotes),
-    '',
-    'Song Request:',
-    getOptionalValue(form.songRequest),
-    '',
-    'Short Message:',
-    getOptionalValue(form.message),
-  ].join('\n')
-  const params = new URLSearchParams({ subject, body })
-  const recipientEmail = rsvp.form.recipientEmail.trim()
-
-  return `mailto:${recipientEmail}?${params.toString()}`
-}
-
 export function RsvpPage() {
   const guestNamesRef = useRef<HTMLInputElement | null>(null)
   const firstAttendanceRef = useRef<HTMLInputElement | null>(null)
   const [form, setForm] = useState<RsvpFormState>(initialForm)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSending, setIsSending] = useState(false)
+  const [sendError, setSendError] = useState('')
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false)
   const formErrors = getFormErrors(form)
   const showGuestError = hasAttemptedSubmit && Boolean(formErrors.guests)
@@ -101,12 +66,14 @@ export function RsvpPage() {
         [field]: value,
       }))
       setIsSubmitted(false)
+      setSendError('')
     }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     setHasAttemptedSubmit(true)
+    setSendError('')
 
     const nextErrors = getFormErrors(form)
 
@@ -122,8 +89,29 @@ export function RsvpPage() {
       return
     }
 
-    window.location.href = buildRsvpEmailLink(form)
-    setIsSubmitted(true)
+    setIsSending(true)
+
+    try {
+      await sendRsvpEmail({
+        toEmail: rsvp.form.recipientEmail.trim(),
+        guestNames: form.guests.trim(),
+        attendance: getAttendanceLabel(form.attendance),
+        firstMeal: getMealLabel(form.firstMeal),
+        secondMeal: getMealLabel(form.secondMeal),
+        dietaryNotes: getOptionalValue(form.dietaryNotes),
+        songRequest: getOptionalValue(form.songRequest),
+        guestMessage: getOptionalValue(form.message),
+      })
+      setForm(initialForm)
+      setHasAttemptedSubmit(false)
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error(error)
+      setIsSubmitted(false)
+      setSendError('Sorry, your RSVP could not be sent. Please try again.')
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
@@ -144,7 +132,13 @@ export function RsvpPage() {
             alt={rsvp.decorativeImage.alt}
             aria-hidden="true"
           />
-          <form className="rsvp-form" onSubmit={handleSubmit} noValidate>
+          <form
+            className="rsvp-form"
+            onSubmit={handleSubmit}
+            autoComplete="off"
+            aria-busy={isSending}
+            noValidate
+          >
             <div className="form-group">
               <label htmlFor="guest-names">
                 {rsvp.form.guestNamesLabel}
@@ -270,13 +264,22 @@ export function RsvpPage() {
             </div>
 
             <div className="rsvp-submit-row">
-              <button className="primary-button rsvp-submit" type="submit">
-                {rsvp.form.submitLabel}
+              <button
+                className="primary-button rsvp-submit"
+                type="submit"
+                disabled={isSending}
+              >
+                {isSending ? 'Sending...' : rsvp.form.submitLabel}
               </button>
               <p>{rsvp.form.thanksMessage}</p>
               {isSubmitted ? (
                 <p className="rsvp-confirmation" role="status">
                   {rsvp.form.confirmationMessage}
+                </p>
+              ) : null}
+              {sendError ? (
+                <p className="rsvp-error" role="alert">
+                  {sendError}
                 </p>
               ) : null}
             </div>

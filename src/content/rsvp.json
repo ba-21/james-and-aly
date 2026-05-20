@@ -8,7 +8,7 @@
     "alt": ""
   },
   "form": {
-    "recipientEmail": "themorganwedding27@gmail.com",
+    "recipientEmail": "james805268@gmail.com",
     "guestNamesLabel": "Guest Names",
     "guestNamesPlaceholder": "Full names of all guests in your party",
     "attendanceLabel": "Will you join us?",
@@ -31,6 +31,6 @@
     "messagePlaceholder": "Leave us a note, wish, or anything we should know.",
     "submitLabel": "Submit Response",
     "thanksMessage": "Thank you for being part of our story.",
-    "confirmationMessage": "Your email app has been opened with your RSVP response."
+    "confirmationMessage": "Your RSVP response has been sent."
   }
 }

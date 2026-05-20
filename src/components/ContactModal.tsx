@@ -1,6 +1,7 @@
 import type { ChangeEvent, FormEvent } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll'
+import { sendContactEmail } from '../services/email'
 import { Icon } from './Icon'
 
 type ContactFormState = {
@@ -40,26 +41,6 @@ const getContactErrors = (form: ContactFormState) => ({
   message: form.message.trim() ? '' : 'Please enter your message.',
 })
 
-const buildContactEmailLink = (
-  recipientEmail: string,
-  form: ContactFormState,
-) => {
-  const subject = normalizeSubject(form.subject)
-  const body = [
-    'Name:',
-    form.name.trim(),
-    '',
-    'Email:',
-    form.email.trim(),
-    '',
-    'Message:',
-    form.message.trim(),
-  ].join('\n')
-  const params = new URLSearchParams({ subject, body })
-
-  return `mailto:${recipientEmail.trim()}?${params.toString()}`
-}
-
 export function ContactModal({
   isOpen,
   recipientEmail,
@@ -72,9 +53,20 @@ export function ContactModal({
   const [form, setForm] = useState<ContactFormState>(initialContactForm)
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSending, setIsSending] = useState(false)
+  const [sendError, setSendError] = useState('')
   const formErrors = getContactErrors(form)
 
   useLockBodyScroll(isOpen)
+
+  const handleClose = useCallback(() => {
+    setForm(initialContactForm)
+    setHasAttemptedSubmit(false)
+    setIsSubmitted(false)
+    setIsSending(false)
+    setSendError('')
+    onClose()
+  }, [onClose])
 
   useEffect(() => {
     if (!isOpen) {
@@ -86,7 +78,7 @@ export function ContactModal({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose()
+        handleClose()
         return
       }
 
@@ -121,7 +113,7 @@ export function ContactModal({
       previousFocusRef.current?.focus()
       previousFocusRef.current = null
     }
-  }, [isOpen, onClose])
+  }, [isOpen, handleClose])
 
   if (!isOpen) {
     return null
@@ -135,11 +127,13 @@ export function ContactModal({
         [field]: event.target.value,
       }))
       setIsSubmitted(false)
+      setSendError('')
     }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setHasAttemptedSubmit(true)
+    setSendError('')
 
     const nextErrors = getContactErrors(form)
 
@@ -152,8 +146,26 @@ export function ContactModal({
       return
     }
 
-    window.location.href = buildContactEmailLink(recipientEmail, form)
-    setIsSubmitted(true)
+    setIsSending(true)
+
+    try {
+      await sendContactEmail({
+        toEmail: recipientEmail.trim(),
+        fromName: form.name.trim(),
+        fromEmail: form.email.trim(),
+        contactSubject: normalizeSubject(form.subject),
+        message: form.message.trim(),
+      })
+      setForm(initialContactForm)
+      setHasAttemptedSubmit(false)
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error(error)
+      setIsSubmitted(false)
+      setSendError('Sorry, your message could not be sent. Please try again.')
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
@@ -162,7 +174,7 @@ export function ContactModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-modal-title"
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div
         ref={panelRef}
@@ -174,7 +186,7 @@ export function ContactModal({
           className="contact-modal-close"
           type="button"
           aria-label="Close contact form"
-          onClick={onClose}
+          onClick={handleClose}
         >
           <Icon name="close" />
         </button>
@@ -183,7 +195,13 @@ export function ContactModal({
           Contact Us
         </h2>
 
-        <form className="contact-form" onSubmit={handleSubmit} noValidate>
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          aria-busy={isSending}
+          noValidate
+        >
           <div className="form-group">
             <label htmlFor="contact-name">Name</label>
             <input
@@ -274,13 +292,22 @@ export function ContactModal({
           </div>
 
           <div className="contact-submit-row">
-            <button className="primary-button contact-submit" type="submit">
+            <button
+              className="primary-button contact-submit"
+              type="submit"
+              disabled={isSending}
+            >
               <Icon name="mail" />
-              <span>Send Message</span>
+              <span>{isSending ? 'Sending...' : 'Send Message'}</span>
             </button>
             {isSubmitted ? (
               <p className="rsvp-confirmation" role="status">
-                Your email app has been opened with your message.
+                Your message has been sent.
+              </p>
+            ) : null}
+            {sendError ? (
+              <p className="rsvp-error" role="alert">
+                {sendError}
               </p>
             ) : null}
           </div>
