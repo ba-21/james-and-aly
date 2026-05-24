@@ -70,15 +70,6 @@ components:
       - name: lines
         type: string
         list: true
-  storyImage:
-    type: object
-    label: Story image
-    fields:
-      - name: title
-        type: string
-        required: true
-      - name: image
-        component: image
   scheduleEvent:
     type: object
     label: Schedule event
@@ -254,17 +245,6 @@ content:
             type: string
           - name: items
             component: detailCard
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{title}"
-      - name: story
-        type: object
-        fields:
-          - name: title
-            type: string
-          - name: images
-            component: storyImage
             list:
               collapsible:
                 collapsed: true

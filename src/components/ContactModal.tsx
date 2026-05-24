@@ -2,6 +2,7 @@ import type { ChangeEvent, FormEvent } from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll'
 import { sendContactEmail } from '../services/email'
+import { ConfettiBurst } from './ConfettiBurst'
 import { Icon } from './Icon'
 
 type ContactFormState = {
@@ -55,6 +56,7 @@ export function ContactModal({
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSending, setIsSending] = useState(false)
   const [sendError, setSendError] = useState('')
+  const [confettiKey, setConfettiKey] = useState(0)
   const formErrors = getContactErrors(form)
 
   useLockBodyScroll(isOpen)
@@ -159,6 +161,7 @@ export function ContactModal({
       setForm(initialContactForm)
       setHasAttemptedSubmit(false)
       setIsSubmitted(true)
+      setConfettiKey((current) => current + 1)
     } catch (error) {
       console.error(error)
       setIsSubmitted(false)
@@ -181,6 +184,9 @@ export function ContactModal({
         className="contact-modal-panel"
         onClick={(event) => event.stopPropagation()}
       >
+        {isSubmitted ? (
+          <ConfettiBurst key={confettiKey} />
+        ) : null}
         <button
           ref={closeButtonRef}
           className="contact-modal-close"

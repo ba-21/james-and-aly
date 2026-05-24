@@ -12,10 +12,7 @@ export type RsvpEmailParams = {
   toEmail: string
   guestNames: string
   attendance: string
-  firstMeal: string
-  secondMeal: string
   dietaryNotes: string
-  songRequest: string
   guestMessage: string
 }
 
@@ -70,10 +67,7 @@ export const sendRsvpEmail = (params: RsvpEmailParams) =>
     to_email: params.toEmail,
     guest_names: params.guestNames,
     attendance: params.attendance,
-    first_meal: params.firstMeal,
-    second_meal: params.secondMeal,
     dietary_notes: params.dietaryNotes,
-    song_request: params.songRequest,
     guest_message: params.guestMessage,
     submitted_at: getSubmittedAt(),
   })

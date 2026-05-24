@@ -1,6 +1,5 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { ContactModal } from '../components/ContactModal'
-import { GalleryModal } from '../components/GalleryModal'
 import { Icon } from '../components/Icon'
 import { home, rsvp, weddingDate } from '../content'
 import { useCountdown } from '../hooks/useCountdown'
@@ -15,9 +14,6 @@ const formatUnit = (value: number) => value.toString().padStart(2, '0')
 
 export function HomePage({ onNavigate, onRsvp }: HomePageProps) {
   const countdown = useCountdown(weddingDate)
-  const storyImages = home.story.images
-  const storyCount = storyImages.length
-  const [activeStoryIndex, setActiveStoryIndex] = useState<number | null>(null)
   const [isContactOpen, setIsContactOpen] = useState(false)
   const countdownItems = [
     { label: home.countdown.labels.days, value: countdown.days.toString() },
@@ -27,21 +23,6 @@ export function HomePage({ onNavigate, onRsvp }: HomePageProps) {
       value: formatUnit(countdown.minutes),
     },
   ]
-
-  const closeStoryModal = useCallback(() => setActiveStoryIndex(null), [])
-
-  const stepStory = useCallback(
-    (direction: -1 | 1) => {
-      setActiveStoryIndex((currentIndex) => {
-        if (currentIndex === null || storyCount === 0) {
-          return currentIndex
-        }
-
-        return (currentIndex + direction + storyCount) % storyCount
-      })
-    },
-    [storyCount],
-  )
 
   return (
     <>
@@ -135,39 +116,6 @@ export function HomePage({ onNavigate, onRsvp }: HomePageProps) {
         </div>
       </section>
 
-      <section className="story-section" aria-labelledby="story-title">
-        <div className="section-inner centered">
-          <h2 className="section-title" id="story-title">
-            {home.story.title}
-          </h2>
-          <div className="story-grid">
-            {storyImages.map((story, index) => (
-              <figure className="story-card" key={story.title}>
-                <button
-                  className="story-card-button"
-                  type="button"
-                  aria-label={`Open ${story.title}`}
-                  onClick={() => setActiveStoryIndex(index)}
-                >
-                  <img
-                    src={story.image.src}
-                    alt={story.image.alt}
-                    loading="lazy"
-                  />
-                </button>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <GalleryModal
-        title={home.story.title}
-        items={storyImages}
-        activeIndex={activeStoryIndex}
-        onClose={closeStoryModal}
-        onStep={stepStory}
-      />
       <ContactModal
         isOpen={isContactOpen}
         recipientEmail={rsvp.form.recipientEmail}

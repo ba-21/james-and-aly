@@ -1,26 +1,21 @@
 import type { ChangeEvent, FormEvent } from 'react'
 import { useRef, useState } from 'react'
+import { ConfettiBurst } from '../components/ConfettiBurst'
 import { Icon } from '../components/Icon'
-import { rsvp, type Attendance, type MealChoice } from '../content'
+import { rsvp, type Attendance } from '../content'
 import { sendRsvpEmail } from '../services/email'
 
 type RsvpFormState = {
   guests: string
   attendance: Attendance
-  firstMeal: MealChoice
-  secondMeal: MealChoice
   dietaryNotes: string
-  songRequest: string
   message: string
 }
 
 const initialForm: RsvpFormState = {
   guests: '',
   attendance: '',
-  firstMeal: '',
-  secondMeal: '',
   dietaryNotes: '',
-  songRequest: '',
   message: '',
 }
 
@@ -33,10 +28,6 @@ const getAttendanceLabel = (attendance: Attendance) =>
   rsvp.form.attendanceOptions.find((option) => option.value === attendance)
     ?.label ?? 'Not selected'
 
-const getMealLabel = (meal: MealChoice) =>
-  rsvp.form.mealOptions.find((option) => option.value === meal)?.label ??
-  'Not selected'
-
 const getOptionalValue = (value: string) => value.trim() || 'None provided'
 
 export function RsvpPage() {
@@ -46,6 +37,7 @@ export function RsvpPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSending, setIsSending] = useState(false)
   const [sendError, setSendError] = useState('')
+  const [confettiKey, setConfettiKey] = useState(0)
   const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false)
   const formErrors = getFormErrors(form)
   const showGuestError = hasAttemptedSubmit && Boolean(formErrors.guests)
@@ -96,15 +88,13 @@ export function RsvpPage() {
         toEmail: rsvp.form.recipientEmail.trim(),
         guestNames: form.guests.trim(),
         attendance: getAttendanceLabel(form.attendance),
-        firstMeal: getMealLabel(form.firstMeal),
-        secondMeal: getMealLabel(form.secondMeal),
         dietaryNotes: getOptionalValue(form.dietaryNotes),
-        songRequest: getOptionalValue(form.songRequest),
         guestMessage: getOptionalValue(form.message),
       })
       setForm(initialForm)
       setHasAttemptedSubmit(false)
       setIsSubmitted(true)
+      setConfettiKey((current) => current + 1)
     } catch (error) {
       console.error(error)
       setIsSubmitted(false)
@@ -132,6 +122,9 @@ export function RsvpPage() {
             alt={rsvp.decorativeImage.alt}
             aria-hidden="true"
           />
+          {isSubmitted ? (
+            <ConfettiBurst key={confettiKey} />
+          ) : null}
           <form
             className="rsvp-form"
             onSubmit={handleSubmit}
@@ -192,63 +185,17 @@ export function RsvpPage() {
             </fieldset>
 
             <div className="form-group">
-              <label htmlFor="first-meal">{rsvp.form.mealLabel}</label>
-              <div className="meal-grid">
-                <div className="select-field">
-                  <select
-                    id="first-meal"
-                    className="rsvp-select"
-                    value={form.firstMeal}
-                    onChange={updateField('firstMeal')}
-                  >
-                    <option value="">{rsvp.form.firstMealPlaceholder}</option>
-                    {rsvp.form.mealOptions.map((option) => (
-                      <option value={option.value} key={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                  <Icon name="expand_more" />
-                </div>
-                <div className="select-field">
-                  <select
-                    className="rsvp-select"
-                    value={form.secondMeal}
-                    onChange={updateField('secondMeal')}
-                    aria-label="Second guest meal preference"
-                  >
-                    <option value="">{rsvp.form.secondMealPlaceholder}</option>
-                    {rsvp.form.mealOptions.map((option) => (
-                      <option value={option.value} key={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                  <Icon name="expand_more" />
-                </div>
-              </div>
+              <label htmlFor="dietary-notes">
+                {rsvp.form.dietaryPlaceholder}
+              </label>
               <input
+                id="dietary-notes"
                 className="rsvp-input"
                 type="text"
                 value={form.dietaryNotes}
                 onChange={updateField('dietaryNotes')}
                 placeholder={rsvp.form.dietaryPlaceholder}
               />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="song-request">{rsvp.form.songLabel}</label>
-              <div className="song-input">
-                <Icon name="music_note" />
-                <input
-                  id="song-request"
-                  className="rsvp-input"
-                  type="text"
-                  value={form.songRequest}
-                  onChange={updateField('songRequest')}
-                  placeholder={rsvp.form.songPlaceholder}
-                />
-              </div>
             </div>
 
             <div className="form-group">

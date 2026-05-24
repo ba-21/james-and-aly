@@ -26,11 +26,6 @@ export type CelebrationDetail = {
   lines: string[]
 }
 
-export type StoryImage = {
-  title: string
-  image: EventImage
-}
-
 export type HomeContent = {
   hero: {
     eyebrow: string
@@ -55,10 +50,6 @@ export type HomeContent = {
     secondaryCta: string
     contactCta: string
     items: CelebrationDetail[]
-  }
-  story: {
-    title: string
-    images: StoryImage[]
   }
 }
 
@@ -165,7 +156,6 @@ export type TravelContent = {
 }
 
 export type Attendance = '' | 'attending' | 'declining'
-export type MealChoice = '' | 'beef' | 'fish' | 'vegetarian'
 
 export type RsvpContent = {
   hero: {
@@ -182,16 +172,7 @@ export type RsvpContent = {
       value: Exclude<Attendance, ''>
       label: string
     }>
-    mealLabel: string
-    firstMealPlaceholder: string
-    secondMealPlaceholder: string
-    mealOptions: Array<{
-      value: Exclude<MealChoice, ''>
-      label: string
-    }>
     dietaryPlaceholder: string
-    songLabel: string
-    songPlaceholder: string
     messageLabel: string
     messagePlaceholder: string
     submitLabel: string

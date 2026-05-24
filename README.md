@@ -46,10 +46,8 @@ public/uploads
 JSON image fields should reference them with root-relative paths, for example:
 
 ```json
-"/uploads/engagement-01.png"
+"/uploads/hero-wedding.png"
 ```
-
-The Our Story gallery is configured in `src/content/home.json` under `story.images`.
 
 ## Pages CMS
 
@@ -110,4 +108,15 @@ src/styles      Split CSS files
 
 ## RSVP
 
-The RSVP form currently validates required fields on the client. It is ready to be wired to an email/form service when the destination email is available.
+The RSVP and contact forms validate required fields on the client and submit through EmailJS.
+
+EmailJS configuration is read from Vite environment variables. Use `.env.example` as the template for local setup:
+
+```text
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
+VITE_EMAILJS_CONTACT_TEMPLATE_ID=
+VITE_EMAILJS_RSVP_TEMPLATE_ID=
+```
+
+The RSVP destination email is configured in `src/content/rsvp.json` under `form.recipientEmail`. Contact form destination emails are passed from the page content that opens the contact modal.

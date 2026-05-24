@@ -41,52 +41,5 @@
         "lines": ["Blue Water Resort", "Room block available"]
       }
     ]
-  },
-  "story": {
-    "title": "Our Story",
-    "images": [
-      {
-        "title": "A walk through Crete",
-        "image": {
-          "src": "/uploads/engagement-01.png",
-          "alt": "Engaged couple walking hand in hand through a sunlit Mediterranean stone lane."
-        }
-      },
-      {
-        "title": "By the sea",
-        "image": {
-          "src": "/uploads/engagement-02.png",
-          "alt": "Engaged couple seated together on a stone wall overlooking the Cretan sea."
-        }
-      },
-      {
-        "title": "Among the olives",
-        "image": {
-          "src": "/uploads/engagement-03.png",
-          "alt": "Engaged couple standing close together in a quiet olive grove."
-        }
-      },
-      {
-        "title": "Dancing at dusk",
-        "image": {
-          "src": "/uploads/engagement-04.png",
-          "alt": "Engaged couple dancing together on a quiet beach at dusk."
-        }
-      },
-      {
-        "title": "Morning coffee",
-        "image": {
-          "src": "/uploads/engagement-05.png",
-          "alt": "Engaged couple sharing coffee at an outdoor cafe table in a Cretan village."
-        }
-      },
-      {
-        "title": "Terrace twilight",
-        "image": {
-          "src": "/uploads/engagement-06.png",
-          "alt": "Engaged couple embracing on a whitewashed terrace at blue hour."
-        }
-      }
-    ]
   }
 }

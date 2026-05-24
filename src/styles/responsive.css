@@ -57,7 +57,6 @@
   }
 
   .detail-grid,
-  .story-grid,
   .event-row {
     grid-template-columns: 1fr;
   }
@@ -258,48 +257,9 @@
     padding-top: 72px;
   }
 
-  .story-section {
-    padding: 72px 0 88px;
-  }
-
   .detail-card {
     min-height: 208px;
     padding: 32px 24px;
-  }
-
-  .story-grid {
-    gap: 18px;
-  }
-
-  .gallery-modal-panel {
-    width: min(100%, 760px);
-  }
-
-  .gallery-modal-frame {
-    width: min(88vw, 680px);
-  }
-
-  .gallery-modal-close {
-    right: 16px;
-  }
-
-  .gallery-modal-step--previous {
-    left: 16px;
-  }
-
-  .gallery-modal-step--next {
-    right: 16px;
-  }
-
-  .gallery-modal-frame img {
-    max-height: 70svh;
-  }
-
-  .gallery-modal-frame figcaption {
-    flex-direction: column;
-    gap: 4px;
-    padding: 14px 16px;
-    text-align: left;
   }
 
   .home-actions {
@@ -446,8 +406,7 @@
     gap: 38px;
   }
 
-  .radio-row,
-  .meal-grid {
+  .radio-row {
     grid-template-columns: 1fr;
   }
 

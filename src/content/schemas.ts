@@ -4,7 +4,6 @@ import type {
   CelebrationDetail,
   EventImage,
   HomeContent,
-  MealChoice,
   RegistryContent,
   RegistryItem,
   RsvpContent,
@@ -12,7 +11,6 @@ import type {
   ScheduleDay,
   ScheduleEvent,
   SiteContent,
-  StoryImage,
   TravelContent,
   TravelFeature,
   TravelTip,
@@ -64,9 +62,6 @@ const materialIcons = [
 
 const attendanceValues = ['attending', 'declining'] satisfies Array<
   Exclude<Attendance, ''>
->
-const mealValues = ['beef', 'fish', 'vegetarian'] satisfies Array<
-  Exclude<MealChoice, ''>
 >
 const registryVariants = [
   'feature',
@@ -226,13 +221,6 @@ const assertCelebrationDetail: ContentAssertion<CelebrationDetail> = (
   requireStringArray(requireArray(detail, 'lines', path), `${path}.lines`)
 }
 
-const assertStoryImage: ContentAssertion<StoryImage> = (value, path) => {
-  const story = requireObject(value, path)
-
-  requireString(story, 'title', path)
-  requireImage(story.image, `${path}.image`)
-}
-
 const assertScheduleEvent: ContentAssertion<ScheduleEvent> = (value, path) => {
   const event = requireObject(value, path)
 
@@ -376,12 +364,6 @@ export const assertHomeContent: ContentAssertion<HomeContent> = (value, path) =>
   requireArray(details, 'items', `${path}.details`).forEach((item, index) =>
     assertCelebrationDetail(item, `${path}.details.items[${index}]`),
   )
-
-  const story = requireObjectField(home, 'story', path)
-  requireString(story, 'title', `${path}.story`)
-  requireArray(story, 'images', `${path}.story`).forEach((image, index) =>
-    assertStoryImage(image, `${path}.story.images[${index}]`),
-  )
 }
 
 export const assertScheduleContent: ContentAssertion<ScheduleContent> = (
@@ -470,17 +452,7 @@ export const assertRsvpContent: ContentAssertion<RsvpContent> = (value, path) =>
     attendanceValues,
     `${path}.form.attendanceOptions`,
   )
-  requireString(form, 'mealLabel', `${path}.form`)
-  requireString(form, 'firstMealPlaceholder', `${path}.form`)
-  requireString(form, 'secondMealPlaceholder', `${path}.form`)
-  assertOptionArray(
-    requireArray(form, 'mealOptions', `${path}.form`),
-    mealValues,
-    `${path}.form.mealOptions`,
-  )
   requireString(form, 'dietaryPlaceholder', `${path}.form`)
-  requireString(form, 'songLabel', `${path}.form`)
-  requireString(form, 'songPlaceholder', `${path}.form`)
   requireString(form, 'messageLabel', `${path}.form`)
   requireString(form, 'messagePlaceholder', `${path}.form`)
   requireString(form, 'submitLabel', `${path}.form`)

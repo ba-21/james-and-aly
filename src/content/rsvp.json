@@ -8,7 +8,7 @@
     "alt": ""
   },
   "form": {
-    "recipientEmail": "james805268@gmail.com",
+    "recipientEmail": "themorganwedding27@gmail.com",
     "guestNamesLabel": "Guest Names",
     "guestNamesPlaceholder": "Full names of all guests in your party",
     "attendanceLabel": "Will you join us?",
@@ -16,17 +16,7 @@
       { "value": "attending", "label": "Joyfully Accept" },
       { "value": "declining", "label": "Regretfully Decline" }
     ],
-    "mealLabel": "Meal Preference",
-    "firstMealPlaceholder": "Select an option",
-    "secondMealPlaceholder": "Second Guest Preference",
-    "mealOptions": [
-      { "value": "beef", "label": "Herb-Crusted Filet Mignon" },
-      { "value": "fish", "label": "Miso Glazed Sea Bass" },
-      { "value": "vegetarian", "label": "Wild Mushroom Risotto (V)" }
-    ],
     "dietaryPlaceholder": "Dietary restrictions or allergies",
-    "songLabel": "Song Request",
-    "songPlaceholder": "What song will get you on the dance floor?",
     "messageLabel": "Short Message",
     "messagePlaceholder": "Leave us a note, wish, or anything we should know.",
     "submitLabel": "Submit Response",
